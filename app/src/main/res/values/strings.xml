@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Beacon Fun</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="beacon_intro">Find beacons near you!</string>
+    <string name="beacon_search">Search!</string>
+</resources>
