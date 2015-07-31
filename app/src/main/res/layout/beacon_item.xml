@@ -20,10 +20,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tag="mac"
+            android:tag="name"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:text="Device Name" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="mac"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="Device MAC" />
 
         <LinearLayout
             android:layout_width="wrap_content"

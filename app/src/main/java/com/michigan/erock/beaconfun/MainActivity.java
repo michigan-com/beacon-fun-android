@@ -22,8 +22,13 @@ import android.widget.ToggleButton;
 
 import com.estimote.sdk.Beacon;
 import com.estimote.sdk.BeaconManager;
+import com.estimote.sdk.EstimoteSDK;
 import com.estimote.sdk.Nearable;
 import com.estimote.sdk.Region;
+import com.estimote.sdk.cloud.EstimoteCloud;
+import com.estimote.sdk.cloud.model.BeaconInfo;
+import com.estimote.sdk.connection.BeaconConnection;
+import com.estimote.sdk.exception.EstimoteDeviceException;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -46,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        EstimoteSDK.initialize(this, "i-pd-beacon-test", "7d06e8ad396ff7a5c429e3cb07ed16bc");
+        EstimoteSDK.enableDebugLogging(true);
 
         adapter = new BeaconListAdapter(this);
 
@@ -142,6 +150,9 @@ public class MainActivity extends AppCompatActivity {
         return new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d(TAG, position + " was just clicked!");
+                Log.d(TAG, "CLICK EXTRA: " + getIntent().getStringExtra(EXTRAS_TARGET_ACTIVITY));
+
                 if (getIntent().getStringExtra(EXTRAS_TARGET_ACTIVITY) != null) {
                     try {
                         Class<?> clazz = Class.forName(getIntent().getStringExtra(EXTRAS_TARGET_ACTIVITY));
